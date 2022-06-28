@@ -32,8 +32,6 @@ use App\Http\Controllers\sairController;
 
 
 
-
-
 Route::get('/', function () {
     return view('home');
 });
@@ -63,7 +61,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);
     Route::resource('observacao', obsMapaP2sController::class);
+
+
+
+    
     Route::resource('finalizando', FinalizandoMapaController::class);
+
+
+
+
+
     Route::resource('retirapaciente', retiraPacienteController::class);
     Route::resource('final', finalMapsController::class);
     Route::resource('confirma', encerraController::class);
