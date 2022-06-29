@@ -18,15 +18,13 @@ class sairController extends Controller
     }
     
     
+    
+
     public function index()
     {
      return view("sair.index");
     
     }
-
-
-
-
 
 
 

@@ -4,7 +4,6 @@
 $cod=base64_decode($id);
 $cod;
 
-
 use App\Models\mapas;
 use App\Models\finalMaps;
 
@@ -16,16 +15,14 @@ use App\Models\mapahospital;
 use App\Models\municipio_mapa_p3;
 
 $macro=Auth::user()->macro; 
-
 $tabela = mapas::all(); 
 $itensP99 = mapas::where('macro',$macro)->get(); 
 $itensP = mapas::where('id',$cod)->get(); 
 
-
 $tabelap2 = incluir_mapa_p2::all(); 
 $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get(); 
-
 ?>
+
 
 <?php $hospUsr=Auth::user()->categorias_id; ?> 
 
@@ -36,7 +33,7 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
 
     @foreach ($itensP  as $t)
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <!-- Meta tags Obrigatórias -->
@@ -59,6 +56,7 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
   </tbody>
 </table>
 
+
 <table class="table table-sm table-dark">
   <tbody>
     <tr>
@@ -79,11 +77,12 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
     <b> Vagas:</b> {{$t->vagas}}<br>
     <b> Criado em :</b> {{$t->created_at}}<br>
     <b> Autalizado em :</b> {{$t->updated_at}}<br>
-   
+ 
   </td>
     </tr>
   </tbody>
 </table>
+
 
 <table class="table table-bordered">
   <tbody>
@@ -94,8 +93,8 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
   </tbody>
 </table>
 
-@foreach ($itensP2  as $t2)
 
+@foreach ($itensP2  as $t2)
 <table class="table table-bordered">
   <tbody>
     <tr>
@@ -140,8 +139,8 @@ echo  $observacao = municipio_mapa_p3::where('idp2',$t2->id)->count();
 <b>Id paciente:</b>{{$o->idPaciente }}<br>
 <b>Id Referencia:</b>{{$o->idp2 }}<br>
 
-<?php 
 
+<?php 
 $tab = mapahospital::all();
 $hosp = mapahospital::where('idp3',$o->idp2)->get();
 
@@ -173,7 +172,7 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
 ?>
 <br>
 
-     @foreach ($final1 as $fm)
+    @foreach ($final1 as $fm)
     <b>Id Referencia:</b>{{$fm->idp4 }}<br>
     <b>Observações da Central:</b>{{$fm->obsCentral }}<br>
     <b>Status do Sisreg</b>{{$fm->statusSisreg }}<br>

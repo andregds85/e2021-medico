@@ -4,14 +4,13 @@
 
 <?php $perfil=Auth::user()->perfil; 
 
-if($perfil<>"regulacao"){
+if($perfil<>"regulador"){
   session()->flush();
 }
 
 ?> </b></p>
 
 <div class="container">
-
 
 <!-- Passo 1 !-->
   <div class="card mb-3">
@@ -26,6 +25,8 @@ if($perfil<>"regulacao"){
        <?php $hospUsr=Auth::user()->categorias_id; ?>  </p>
       </div>
     </div>
+
+
  <?php
 use App\Http\Controllers\MapasController;
 use App\Models\mapas;
@@ -45,6 +46,7 @@ $todos= incluir_mapa_p2::all();
             <p>{{ $message }}</p>
         </div>
     @endif
+
 
 
 @foreach ($itens as $mapa)
@@ -68,6 +70,9 @@ $todos= incluir_mapa_p2::all();
        </p>
       </td>
 <?php 
+
+
+
 
 
 

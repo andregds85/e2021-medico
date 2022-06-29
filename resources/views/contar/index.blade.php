@@ -7,14 +7,12 @@ use App\Models\mapas;
 $perfil= Auth::user()->perfil;
 $regiao= Auth::user()->macro;
 
-
 ?>
 <div class="container">
 <?php 
-if($perfil<>"regulacao"){
+if($perfil<>"regulador"){
   session()->flush();
 }
-
 
 use App\Http\Controllers\IncluirMapaP2sController;
 use App\Models\incluir_mapa_p2;
