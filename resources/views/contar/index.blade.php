@@ -11,9 +11,7 @@ $regiao= Auth::user()->macro;
 ?>
 <div class="container">
 <?php 
-if($perfil<>"regulacao"){
-  session()->flush();
-}
+
 
 
 use App\Http\Controllers\IncluirMapaP2sController;
@@ -35,7 +33,7 @@ $itens  = mapas::where('id',$id)->get();
           <?php $idm=$mapa->id; ?>
           <?php $macro=$mapa->macro; 
           
-          if ($regiao<>$macro){
+        if ($regiao<>$macro){
              session()->flush();
           return view('home');
           }
