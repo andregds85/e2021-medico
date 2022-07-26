@@ -14,6 +14,7 @@ class MapasController extends Controller
          $this->middleware('permission:medicoRegulador-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
+
     public function index()
     {
         $mapas = mapas::latest()->paginate(5);

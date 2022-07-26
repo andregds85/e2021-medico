@@ -1,9 +1,9 @@
 @extends('limpo.app')
 @section('content')
-<?php 
+<?php session_start(); 
+
 $cod=base64_decode($id);
 $cod;
-
 
 use App\Models\mapas;
 use App\Models\finalMaps;
@@ -15,17 +15,22 @@ use App\Models\incluir_mapa_p2;
 use App\Models\mapahospital;
 use App\Models\municipio_mapa_p3;
 
+
 $macro=Auth::user()->macro; 
+$mac=$_SESSION['mac'];
+if ($macro<>$mac){
+  session()->flush();
+}
+
 
 $tabela = mapas::all(); 
 $itensP99 = mapas::where('macro',$macro)->get(); 
 $itensP = mapas::where('id',$cod)->get(); 
 
-
 $tabelap2 = incluir_mapa_p2::all(); 
 $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get(); 
-
 ?>
+
 
 <?php $hospUsr=Auth::user()->categorias_id; ?> 
 

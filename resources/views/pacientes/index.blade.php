@@ -1,6 +1,6 @@
 @extends('layouts3.app')
 @section('content')
-
+<?php session_start(); ?> 
 <div class="container">
 
 <div><td>Macro:</td><td> {{ Auth::user()->macro}}</td> </div>
@@ -31,7 +31,7 @@
 ?>
     <table class="table table-bordered">
         <tr>
-            <th>Solicitação</th>
+            <th>Sigtap</th>
             <th>Hospital</th>
         </tr>
 <?php
@@ -46,26 +46,28 @@ $itensP = Pacientes::select("*")
 ])->get(); 
 
 ?>	
-
     @foreach ($itensP as $paciente)
 	    <tr>
                 
             <td><b>{{$paciente->id}}</b> /
-            {{$paciente->solicitacao }}</td>
+            {{$paciente->codigo }}</td>
             <?php $a=$paciente->categorias_id; ?>
-
+            
                 @foreach($tabela as $item)
                <?php $b=$item->id; ?>
                <?php $c=$item->name; ?>
-
+ 
                 <?php
                 if($b==$a){
                     echo "<td>";
                     echo "$c";
-                } ?>
-                @endforeach
-
-	        
+                    echo "</td>";
+                    echo "<td>";
+                    echo $mac=$item->macro;
+                    $_SESSION['mac'] = $mac;
+                   } ?>
+   
+               @endforeach
             <form action="{{route('pacientes.destroy',$paciente->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('pacientes.show',$paciente->id) }}">Mostrar</a>
                     <a class="btn btn-primary" href="{{ route('pacientes.edit',$paciente->id) }}">Editar</a>
@@ -81,10 +83,7 @@ $itensP = Pacientes::select("*")
     </table>
 
 
-
 <div class="container">
 {!! $pacientes->links() !!}
 </div>    
-
-
 @endsection

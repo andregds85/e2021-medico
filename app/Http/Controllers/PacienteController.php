@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Pacientes;
@@ -48,15 +47,18 @@ class PacienteController extends Controller
                         ->with('Sucesso','Paciente Criado com Sucesso.');
     }
 
- 
     public function show(Pacientes $paciente)
     {
-       return view('pacientes.show',compact('paciente'));
+   
+        return view('pacientes.show',compact('paciente'));
+    
     }
 
      public function edit(Pacientes $paciente)
     {
-      return view('pacientes.edit',compact('paciente'));
+   
+        return view('pacientes.edit',compact('paciente'));
+   
     }
 
      public function update(Request $request, Pacientes $paciente)

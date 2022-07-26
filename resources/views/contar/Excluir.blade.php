@@ -1,6 +1,15 @@
 @extends('limpo.app')
 @section('content')
 <?php 
+session_start(); 
+
+$macro=Auth::user()->macro; 
+$mac=$_SESSION['mac'];
+if ($macro<>$mac){
+  session()->flush();
+}
+
+
 
  use App\Http\Controllers\IncluirMapaP2sController;
  use App\Models\incluir_mapa_p2;
