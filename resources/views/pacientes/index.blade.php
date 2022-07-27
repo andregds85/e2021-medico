@@ -6,6 +6,17 @@
 <div><td>Macro:</td><td> {{ Auth::user()->macro}}</td> </div>
 <?php $m=Auth::user()->macro; ?>
 
+
+
+
+
+
+
+
+
+
+
+
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">

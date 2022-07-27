@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 class categoriaMapas extends Controller
 {
    
+ 
     function __construct()
     {
-         $this->middleware('permission:administrador-list|admin-create|administrador-edit|administrador-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:administrador-create', ['only' => ['administrador','store']]);
-         $this->middleware('permission:administrador-edit', ['only' => ['administrador','update']]);
-         $this->middleware('permission:administrador-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show','__invoke']]);
+         $this->middleware('permission:medicoRegulador-create', ['only' => ['create','store']]);
+         $this->middleware('permission:medicoRegulador-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
     
 

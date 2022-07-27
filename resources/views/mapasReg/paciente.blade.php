@@ -1,5 +1,37 @@
 @extends('layouts3.app')
 @section('content')
+<?php
+use App\Models\mapas;
+use App\Models\finalMaps;
+use App\Models\Pacientes;
+
+use App\Http\Controllers\MapasController;
+use App\Http\Controllers\mapahospitalController;
+use App\Http\Controllers\finalMapsController;
+use App\Http\Controllers\PacienteController;
+
+use App\Models\incluir_mapa_p2;
+use App\Models\mapahospital;
+use App\Models\municipio_mapa_p3;
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Passo 1 !-->
   <div class="card mb-3">

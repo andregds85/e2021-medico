@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 
 class finalMapsController extends Controller
 {
-    function __construct()
-    {
-         $this->middleware('permission:regulacao-list|regulacao-create|regulacao-edit|regulacao-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:regulacao-create', ['only' => ['create','store']]);
-         $this->middleware('permission:regulacao-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:regulacao-delete', ['only' => ['destroy']]);
-    }
 
+  function __construct()
+  {
+       $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show','__invoke']]);
+       $this->middleware('permission:medicoRegulador-create', ['only' => ['create','store']]);
+       $this->middleware('permission:medicoRegulador-edit', ['only' => ['edit','update']]);
+       $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
+  }
     public function index() 
 
     { 
@@ -24,18 +24,14 @@ class finalMapsController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5); */
     }
 
-
      public function store(Request $request)
-    {   
-        request()->validate([
-
+    { 
+       request()->validate([
         ]);
         finalMaps::create($request->all());
         return redirect()->route('home')
                         ->with('Sucesso','criado com  Sucesso.');
-    
     }
-
       public function show($id){ 
 
         return view('finalM.vizualiza',['id'=>$id]); 

@@ -13,10 +13,10 @@ class obsMapaP2sController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:municipio-list|municipio-create|municipio-edit|municipio-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:municipio-create', ['only' => ['create','store']]);
-         $this->middleware('permission:municipio-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:municipio-delete', ['only' => ['destroy']]);
+         $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show','__invoke']]);
+         $this->middleware('permission:medicoRegulador-create', ['only' => ['create','store']]);
+         $this->middleware('permission:medicoRegulador-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
      public function index()
     {

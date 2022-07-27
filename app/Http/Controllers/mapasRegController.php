@@ -20,6 +20,8 @@ class mapasRegController extends Controller
          $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
 
+
+    
     public function index()
     {
         return view('mapasReg.index');

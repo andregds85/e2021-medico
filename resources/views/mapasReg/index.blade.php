@@ -4,7 +4,7 @@
 
 <?php $perfil=Auth::user()->perfil; 
 
-if($perfil<>"regulacao"){
+if($perfil<>"regulador"){
   session()->flush();
 }
 
@@ -70,7 +70,6 @@ $todos= incluir_mapa_p2::all();
 <?php 
 
 
-
 ?>
 
       <td>
@@ -80,12 +79,7 @@ $todos= incluir_mapa_p2::all();
       </td>
 
 
-
-
-
      </td>
-
-
 
 
      <?php

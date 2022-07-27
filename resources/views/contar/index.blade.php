@@ -5,6 +5,18 @@
 use App\Http\Controllers\MapasController;
 use App\Models\mapas;
 
+use App\Models\finalMaps;
+use App\Models\Pacientes;
+
+use App\Http\Controllers\mapahospitalController;
+use App\Http\Controllers\finalMapsController;
+use App\Http\Controllers\PacienteController;
+
+use App\Models\incluir_mapa_p2;
+use App\Models\mapahospital;
+use App\Models\municipio_mapa_p3;
+
+
 $perfil= Auth::user()->perfil;
 $regiao= Auth::user()->macro;
 
@@ -12,17 +24,12 @@ $regiao= Auth::user()->macro;
 <div class="container">
 <?php 
 $perfil= Auth::user()->perfil;
-$numperfil=strlen($perfil);
 
-if($numperfil=9){
-
-}else{
-  session()->flush();
+if($perfil<>"regulador"){
+ session()->flush();
 }
 
-
 use App\Http\Controllers\IncluirMapaP2sController;
-use App\Models\incluir_mapa_p2;
 
 $id=$_GET['id']; 
 $tabela = mapas::all(); 
@@ -46,7 +53,6 @@ $itens  = mapas::where('id',$id)->get();
           }
           
           ?>
-
           <p class="card-text"><b> Nome do Mapa: {{$mapa->nome }} </b></p>
           <p class="card-text"><b> Especialidade: {{$mapa->especialidade }} </b></p>
           <p class="card-text"><b> Procedimento: {{$mapa->procedimento }} </b></p>
@@ -80,10 +86,12 @@ $itens  = mapas::where('id',$id)->get();
     </div>
   </div>
 
+
 <?php 
 $tabela = incluir_mapa_p2::all(); 
 $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
 ?>
+
 
 @foreach ($items as $m)
 
@@ -95,6 +103,23 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
 
           <h6 class="card-title"><b></b></h6>
           <p class="card-text"><b> Id do Mapa: {{$m->idMapa }} </b></p>
+
+
+          <?php 
+              $buscoPac = Pacientes::all();   
+              $pacBuscou = Pacientes::where('id',$m->idPaciente)->get(); 
+              ?>
+              @foreach ($pacBuscou as $z)
+
+           <b>Código da Solicitação: </b> {{$z->solicitacao }}<br>
+           <b>Data da Inserção :</b>{{$z->created_at }}<br>
+           <b>CNS:</b>{{$z->cns }}<br>
+           <b>Municipio:</b>{{$z->municipio }}<br>
+           <b> Nome do Usuário: </b> {{$z->nomedousuario}}<br>
+           <b> Macro:</b> {{$z->macro}}<br>
+
+
+
        <td>
        <p class="card-text">
        <a href="{{url('excluir', ['id' => $m->id]) }}">Excluir</a>
@@ -104,6 +129,7 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
      </div>
     </div>
  
+@endforeach
 @endforeach
 @endsection
         </div>

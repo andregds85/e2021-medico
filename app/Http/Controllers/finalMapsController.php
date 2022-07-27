@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class finalMapsController extends Controller
 {
-    function __construct()
+  
+  
+  function __construct()
     {
          $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show']]);
          $this->middleware('permission:medicoRegulador-create', ['only' => ['create','store']]);
@@ -15,8 +17,9 @@ class finalMapsController extends Controller
          $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
 
-    public function index() 
 
+
+    public function index() 
     { 
         /*
         $mapas = mapas::latest()->paginate(5);
@@ -25,7 +28,8 @@ class finalMapsController extends Controller
     }
 
 
-     public function store(Request $request)
+
+    public function store(Request $request)
     {   
         request()->validate([
 
@@ -35,8 +39,7 @@ class finalMapsController extends Controller
             echo  "<script> alert( 'Sucesso, Cadastro inserido !' ); </script>";  
               return redirect()->route('home')
                         ->with('Sucesso','criado com  Sucesso.');
-    
-    }
+        }
 
       public function show($id){ 
 
