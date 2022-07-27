@@ -90,6 +90,7 @@ $itens  = mapas::where('id',$id)->get();
     </div>
   </div>
 
+
 <?php 
 $tabela = incluir_mapa_p2::all(); 
 $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
@@ -99,7 +100,17 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
 
    <div class="card mb-3">
    <div class="card-body">
-   <p class="card-text"><b> Id do Registro: {{$m->id }} </b></p>
+   <p class="card-text">
+    
+   
+   <td>
+       <p class="card-text">
+      <div class="alert alert-primary" role="alert">
+
+      Regulação <br>
+    
+
+      <b> Id do Registro: {{$m->id }} </b></p>
           <?php $idReg=$m->id; ?>
           <h5 class="card-title"><b>Id do Paciente: {{$m->idPaciente}}</b></h5>
 
@@ -118,7 +129,13 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
            <b>Municipio:</b>{{$z->municipio }}<br>
            <b> Nome do Usuário: </b> {{$z->nomedousuario}}<br>
            <b> Macro:</b> {{$z->macro}}<br>
-
+     </div>
+       </p>
+      </td>
+        
+   
+   
+        
       <td>
        <p class="card-text">
        <div class="alert alert-info" role="alert">
@@ -134,8 +151,6 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
   }?>
 <br>
 
-
-
 @foreach ($vbobserv as $o)
 <b>Id do Registro / Observação Municipio:</b>{{$o->id }}<br>
 <b>Observação do Municipio:</b>{{$o->observacao }}<br>
@@ -150,7 +165,8 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
 <td>
      <p class="card-text">
        <div class="alert alert-warning" role="alert">
-        
+       Hospital
+
        
        <?php 
 $tab = mapahospital::all();
@@ -163,7 +179,6 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
   }  */ ?>
 <br>
 	
-
 @foreach ($hosp as $o1)
 <b>Id Referencia:</b>{{$o1->idp3 }}<br>
 <b>Prontuário do Hospital:</b>{{$o1->prontuarioHospital }}<br>
@@ -175,9 +190,32 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
       </div>
        </p>
       </td>
-        
-       <td>
+ 
+      
+
+      <td>
        <p class="card-text">
+       <div class="alert alert-primary" role="alert">
+       Regulação 
+
+      </div>
+       </p>
+      </td>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+       <td>
+       <p class="alert alert-success">
        <a href="{{url('excluir', ['id' => $m->id]) }}">Excluir</a>
        </p>
       </td>
@@ -195,5 +233,3 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
         </div>
 
 
-
-        
