@@ -14,8 +14,6 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\MunicipioController;
 
 
-
-
 use App\Models\incluir_mapa_p2;
 use App\Models\mapahospital;
 use App\Models\municipio_mapa_p3;
@@ -133,9 +131,7 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
        </p>
       </td>
         
-   
-   
-        
+         
       <td>
        <p class="card-text">
        <div class="alert alert-info" role="alert">
@@ -190,41 +186,42 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
       </div>
        </p>
       </td>
- 
-      
 
       <td>
        <p class="card-text">
        <div class="alert alert-primary" role="alert">
        Regulação 
+       
+<?php
+    
+        $final = finalMaps::where('idPaciente',$m->idPaciente)->get(); ?>
+        @foreach ($final as $f1)
+
+        <b>Id de Referencia</b>{{$f1->idp4 }}<br>
+        <b>Observação da Central:</b>{{$f1->obsCentral }}<br>
+        <b>Status do Sisreg:</b>{{$f1->statusSisreg }}<br>
+        <b>Código do Sisreg:</b>{{$f1->codSisReg }}<br>
+
+        <b>CNS:</b>{{$f1->cns }}<br>
+        <b>ID DO Mapa:</b>{{$f1->idMapa}}<br>
+        <b>ID DO Paciente:</b>{{$f1->idPaciente}}<br>
 
       </div>
        </p>
       </td>
         
-
-
-
-
-
-
-
-
-
-
-
-
        <td>
        <p class="alert alert-success">
        <a href="{{url('excluir', ['id' => $m->id]) }}">Excluir</a>
        </p>
       </td>
-        
+     
 
      </div>
     </div>
 
     
+@endforeach
 @endforeach
 @endforeach
 @endforeach
