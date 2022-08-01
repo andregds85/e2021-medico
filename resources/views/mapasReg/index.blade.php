@@ -64,7 +64,7 @@ $todos= incluir_mapa_p2::all();
   
        <td>
        <p class="card-text">
-       <a href="{{route('contar.index', ['id' => $mapa->id]) }}">Detalhamento</a>
+       <a href="{{route('contar.index', ['id' => $mapa->id]) }}" class="btn btn-light">Detalhamento</a>
        </p>
       </td>
 <?php 
@@ -72,11 +72,7 @@ $todos= incluir_mapa_p2::all();
 
 ?>
 
-      <td>
-       <p class="card-text">
-       <a href="{{url('listar', ['id' => base64_encode($mapa->id)]) }}">Listar o Mapa Completo</a>
-       </p>
-      </td>
+
 
 
      </td>
@@ -93,7 +89,6 @@ $todos= incluir_mapa_p2::all();
 
 	    @endforeach
 @endsection
-
-
-
 </div>
+
+
