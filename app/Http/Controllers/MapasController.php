@@ -22,8 +22,6 @@ class MapasController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-
-
      public function store(Request $request)
     {
         request()->validate([
@@ -38,7 +36,9 @@ class MapasController extends Controller
         return view('mapas.vizualiza',['id'=>$id]);
        }
    
-    public function edit(mapas $mapa)
+
+
+       public function edit(mapas $mapa)
     {
         return view('mapas.edit',compact('mapas'));
     }
@@ -62,4 +62,3 @@ class MapasController extends Controller
     }
     
 }
-

@@ -12,7 +12,6 @@ use App\Http\Controllers\finalMapsController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\MunicipioController;
 
-
 use App\Models\incluir_mapa_p2;
 use App\Models\mapahospital;
 use App\Models\municipio_mapa_p3;
@@ -34,7 +33,6 @@ $id=$_GET['id'];
 $tabela = mapas::all(); 
 $itens  = mapas::where('id',$id)->get();
 ?>
-
 
 <table class="table">
   <tbody>
@@ -108,8 +106,6 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
 </table>   
 
 
-
-
 <table class="table">
   <tbody>
     <tr>
@@ -157,6 +153,7 @@ Data da Cirurgia:{{$o1->prontuarioHospital }}<br>
 Observação do Hospital:{{$o1->obsHospital }}<br>
 <b>Realizou Cirurgia Sim / Não : </b><font color="blue"> {{$o1->realizou }} </font><br>
 
+
 Usuário:{{$o1->usuario }}<br>
 </td>
       </tr>
@@ -181,30 +178,10 @@ Usuário:{{$o1->usuario }}<br>
         CNS:{{$f1->cns }}<br>
         ID DO Mapa:{{$f1->idMapa}}<br>
         ID DO Paciente:{{$f1->idPaciente}}<br>
+      <br>
+      <a href="{{url('medico', ['id' =>Crypt::encrypt($f1->idPaciente)]) }}" class="btn btn-danger">Realizou Cirurgia</a>
 
-      <a href="{{url('excluir', ['id' => $m->id]) }}" class="btn btn-light">Excluir</a>
-
-
-
-      <?php if ($realiza="Sim"){ ?>
-        <a href="#" class="btn btn-light">Médico</a> <?php
-      }else{
-          
-
-      }  ?>
-      
-
-
-
-
-
-
-
-
-
-
-
-      </tr>
+     </tr>
   </tbody>
 </table>  
 

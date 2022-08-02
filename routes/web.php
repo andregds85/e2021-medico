@@ -27,6 +27,11 @@ use App\Http\Controllers\pesquisaController;
 use App\Http\Controllers\pesquisaHospSigController;
 use App\Http\Controllers\sairController;
 use App\Http\Controllers\pesquisaHospSig2Controller;
+use App\Http\Controllers\meFinalController;
+
+
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -54,6 +59,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('vizualiza', mapasRegController::class);
     Route::resource('contar', contarController::class);
     Route::resource('excluir', contarController::class);
+    Route::resource('medico', meFinalController::class);
+
+
+
+    
+
+
+
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);
     Route::resource('observacao', obsMapaP2sController::class);
