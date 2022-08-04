@@ -9,7 +9,11 @@ echo $id1;
 echo "<br>";
 
 use App\Models\mapahospital;
+use App\Models\medicoRegulador;
+
 use App\Http\Controllers\mapahospitalController;
+use App\Http\Controllers\medicoReguladorController;
+
 
 $tab = mapahospital::all();
 $hosp = mapahospital::where('idPaciente',$id1)->get();
@@ -43,19 +47,17 @@ $rest = substr($o1->realizou, 0, 1);
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Formulario do Médico Regulador') }}</div>
-
-                <div class="card-body">
-                <form action="" method="POST" id="validate" enctype="multipart/form-data" NAME="regform"
-    onsubmit="return valida()">
-
-                        @csrf
+    <div class="card-body">
+    <form  method="POST">
+                       
+                @csrf
+                     
                         </div>
                         </div>
                         </div>
                         </div>
                         </div>
-                        
-    
+                   
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -63,12 +65,11 @@ $rest = substr($o1->realizou, 0, 1);
                 <div class="card-header">{{ __('Dados do Mapa') }}</div>
                 <div class="card-body">
 
-
                   <!-- idp2 -->
                      <div class="form-group row">
-                            <label for="idp2" class="col-md-4 col-form-label text-md-right">{{ __('Referencia do Paciente no Mapa ') }}</label>
+                            <label for="idp2" class="col-md-4 col-form-label text-md-right">{{ __('ID do Paciente ') }}</label>
                             <div class="col-md-6">
-                            <input id="idp2" type="text" class="form-control @error('idp2') is-invalid @enderror" name="idp2"  value="" required autocomplete="idp2" readonly>
+                            <input id="idp2" type="text" class="form-control @error('idp2') is-invalid @enderror" name="idp2"  value="<?php  echo $id1; ?>"  required autocomplete="idp2" readonly>
                                 @error('idp2')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -78,53 +79,38 @@ $rest = substr($o1->realizou, 0, 1);
                        </div>
                  
 
-                     <!-- ID do Paciente -->
-                       <div class="form-group row">
-                            <label for="idPaciente" class="col-md-4 col-form-label text-md-right">{{ __('Id do Paciente') }}</label>
-                            <div class="col-md-6">
-                            <input id="idPaciente" type="text" class="form-control @error('idPaciente') is-invalid @enderror" name="idPaciente"  value="" required autocomplete="idPaciente" readonly>
-                                @error('idPaciente')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                       <div class="row">
+                          <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                             <strong>Observacao: </strong>
+                         <textarea class="form-control" style="height:150px" name="obs" placeholder="Obs"></textarea>
+                         </div>
                        </div>
+                     </div>
                  
-                       
-
+               
                                           
                     <!--  passo 1 -->
                        <div class="form-group row">
-                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('Observação') }}</label>
+                            <label for="cpf" class="col-md-4 col-form-label text-md-right">{{ __('Avaliação Final') }}</label>
                             <div class="col-md-6">
-                            <select class="form-control" name="observacao" id="confirma">
-                              <option value='Defina uma observação' >Defina uma observação</option>
-                              <option value='1. Aguarda cirurgia' >1. Aguarda cirurgia</option>
-                              <option value='2. Já realizou no SUS' >2. Já realizou no SUS</option>
-                              <option value='3. Já realizou particular' >3. Já realizou particular</option>
-                              <option value='4. Não deseja mais realizar' >4. Não deseja mais realizar</option>
-                              <option value='5. Contra-indicado o procedimento' >5. Contra-indicado o procedimento</option>
-                              <option value='6. Sem contato' >6. Sem contato</option>
-                              <option value='7. Não localizado' >7. Não localizado</option>
-                              <option value='8. Óbito' >8. Óbito</option>
-                              <option value='9. Termo de desistência assinado' >9. Termo de desistência assinado</option>
-                              <option value='10. Paciente com indicação de UTI' >10. Paciente com indicação de UTI</option>
-                              <option value='11. Paciente aguardando avaliação de outra especialidade' >11. Paciente aguardando avaliação de outra especialidade</option>
-                              <option value='12. Paciente não compareceu na data agendada da cirurgia' >12. Paciente não compareceu na data agendada da cirurgia</option>
-                           
-
-                              </select>     
+                            <select class="form-control" name="avfinal" id="avfinal">
+                              <option value='pendente'>Pendente</option>
+                              <option value='aprovado'>Aprovado</option>
+                              <option value='devolvido'>Devolvido</option>
+                              <option value='reenviado'>Reenviado</option>
+                              <option value='negado'>Negado</option>
+                            </select>     
                                 @error('passo1')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                           </div>
-            
-                     
+ 
+                        </div>
 
+                  
                     <!--  login 1 -->
                     <div class="form-group">
                       <label for="exampleInputCategoria">Login </label>
@@ -137,9 +123,7 @@ $rest = substr($o1->realizou, 0, 1);
                         </div>
                         </div>
                         </div>
-                    
-
-
+                   
 <!--  fim -->
                             <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -154,10 +138,6 @@ $rest = substr($o1->realizou, 0, 1);
         </div>
     </div>
 </div>
-
-
-
-
 
 @endforeach
 @endsection

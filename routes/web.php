@@ -30,9 +30,6 @@ use App\Http\Controllers\pesquisaHospSig2Controller;
 use App\Http\Controllers\meFinalController;
 
 
-
-
-
 Route::get('/', function () {
     return view('home');
 });
@@ -61,12 +58,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('excluir', contarController::class);
     Route::resource('medico', meFinalController::class);
 
-
-
-    
-
-
-
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);
     Route::resource('observacao', obsMapaP2sController::class);
@@ -79,8 +70,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('sigtaphosp', pesquisaHospSigController::class);
     Route::resource('sair', sairController::class);
     Route::resource('sigtaphosp2', pesquisaHospSig2Controller::class);
-
-      
+    
     Route::get('munipac', 'App\Http\Controllers\MunicipioController@paciente');
     Route::get('excluir', 'App\Http\Controllers\contarController@show');
     Route::get('mapasfull', 'App\Http\Controllers\obsMapaP2sController@mapasFull');
@@ -98,6 +88,3 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('export', 'App\Http\Controllers\Import_Export_Controller@export');
  
 });
-
-
-

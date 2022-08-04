@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\incluir_mapa_p2;
-use App\Models\Pacientes;
+use App\Models\medicoRegulador;
 
 
-class IncluirMapaP2sController extends Controller
+
+class medicoReguladorController extends Controller
 {
-
-
     function __construct()
     {
          $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show','__invoke']]);
@@ -22,28 +20,25 @@ class IncluirMapaP2sController extends Controller
    
     public function index()
     {
-        return view('IncluirMapaP2s.index');
+        return view('medico.default');   
     }
- 
+
+
     public function create()
     {
-        return view('IncluirMapaP2s.create');
-    }
-     public function store(Request $request)
-    {
-            request()->validate([
-       
-        ]);
- 
-       incluir_mapa_p2::create($request->all());
-       Pacientes::where('id','idPaciente')->update(['statusSolicitacao' => 'S']);   
-       return redirect()->route('retirapaciente.index')
-                     ->with('Sucesso','Paciente Incluido no Mapa com Sucesso.');
 
-                       
+    }
+  
+    public function store(Request $request)
+    
+    {
+        medicoRegulador::create($request->all());
+         
     }
     
 }
+
+
 
 
 
