@@ -10,13 +10,31 @@ echo "<br>";
 
 use App\Models\mapahospital;
 use App\Models\medicoRegulador;
+use App\Models\regulador;
+
 
 use App\Http\Controllers\mapahospitalController;
 use App\Http\Controllers\medicoReguladorController;
+use App\Http\Controllers\reguladorController;
+
+
+
+
+$regulad=regulador::all();
+$count = regulador::count();    
+
+if($count>0){
+echo '<script language="javascript">alert("Esse paciente ja foi Regulado ");</script>';  
+echo redirect()->route('mapasReg.index');
+
+}
 
 
 $tab = mapahospital::all();
 $hosp = mapahospital::where('idPaciente',$id1)->get();
+
+
+
 
 ?>
 @foreach ($hosp as $o1)
@@ -35,12 +53,11 @@ $rest = substr($o1->realizou, 0, 1);
 
   echo  "<body onload='window.history.back();'>";
  }else{
- echo  "Deu tudo Certo";
+ echo  "";
  }
 
 ?>
 <br>
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -48,9 +65,10 @@ $rest = substr($o1->realizou, 0, 1);
             <div class="card">
                 <div class="card-header">{{ __('Formulario do Médico Regulador') }}</div>
     <div class="card-body">
-    <form  method="POST">
+    <form action="{{ url('recebe') }}" method="GET" id="validate" enctype="multipart/form-data" NAME="regform"
+    onsubmit="return valida()"> 
+@csrf
                        
-                @csrf
                      
                         </div>
                         </div>
@@ -115,7 +133,7 @@ $rest = substr($o1->realizou, 0, 1);
                     <div class="form-group">
                       <label for="exampleInputCategoria">Login </label>
                   <select class="form-control" name="usuarioSistema"> 
-                      <option value='' >{{Auth::user()->email}}</option>
+                      <option value='{{Auth::user()->email}}' >{{Auth::user()->email}}</option>
                     </select>
                      </div>
                    </div>

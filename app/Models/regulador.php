@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class medicoRegulador extends Model
+class regulador extends Model
 {
     use HasFactory;
     protected $table="regulador";

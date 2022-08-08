@@ -17,12 +17,10 @@ class meFinalController extends Controller
          $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
 
-
     public function index()
     {
         return view('medico.index');
     }
-  
     public function show($id)
     {
         return view('medico.index',['id'=>$id]);

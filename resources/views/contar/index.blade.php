@@ -87,8 +87,7 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
   Id do Registro: {{$m->id }} 
           <?php $idReg=$m->id; ?><br><br>
          <b> Id do Paciente: {{$m->idPaciente}} </b><br>
-          
-          Id do Mapa: {{$m->idMapa }} <br>
+             Id do Mapa: {{$m->idMapa }} <br>
           <?php 
               $buscoPac = Pacientes::all();   
               $pacBuscou = Pacientes::where('id',$m->idPaciente)->get(); 
@@ -104,7 +103,6 @@ $items  = incluir_mapa_p2::where('idMapa',$idm)->get();
       </tr>
   </tbody>
 </table>   
-
 
 <table class="table">
   <tbody>
@@ -125,7 +123,6 @@ Id do Registro / Observação Municipio:</b>{{$o->id }}<br>
 Observação do Municipio:</b>{{$o->observacao }}<br>
 Id paciente:{{$o->idPaciente }}<br>
 Id Referencia:{{$o->idp2 }}<br>
-
       </tr>
   </tbody>
 </table>   

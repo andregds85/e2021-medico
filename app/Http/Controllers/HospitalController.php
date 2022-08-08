@@ -30,7 +30,6 @@ class HospitalController extends Controller
          return view('hospital.index',['itens' => $hospital]);
     }
 
-
    
     public function show($id){
      return view('hospital.vizualiza',['id'=>$id]);

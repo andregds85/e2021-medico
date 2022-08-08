@@ -28,6 +28,8 @@ use App\Http\Controllers\pesquisaHospSigController;
 use App\Http\Controllers\sairController;
 use App\Http\Controllers\pesquisaHospSig2Controller;
 use App\Http\Controllers\meFinalController;
+use App\Http\Controllers\recebeFormController;
+
 
 
 Route::get('/', function () {
@@ -57,6 +59,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('contar', contarController::class);
     Route::resource('excluir', contarController::class);
     Route::resource('medico', meFinalController::class);
+    Route::resource('recebe', recebeFormController::class);
+
 
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);

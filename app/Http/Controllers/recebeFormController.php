@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\medicoRegulador;
+use App\Models\incluir_mapa_p2;
 
-
-
-class medicoReguladorController extends Controller
+class recebeFormController extends Controller
 {
+       
     function __construct()
     {
          $this->middleware('permission:medicoRegulador-list|medicoRegulador-create|medicoRegulador-edit|medicoRegulador-delete', ['only' => ['index','show','__invoke']]);
@@ -17,28 +16,12 @@ class medicoReguladorController extends Controller
          $this->middleware('permission:medicoRegulador-edit', ['only' => ['edit','update']]);
          $this->middleware('permission:medicoRegulador-delete', ['only' => ['destroy']]);
     }
-   
+
     public function index()
     {
-        return view('medico.default');   
+        return view('medico.recebe');
     }
 
 
-    public function create()
-    {
-
-    }
-  
-    public function store(Request $request)
-    
-    {
-        medicoRegulador::create($request->all());
-         
-    }
     
 }
-
-
-
-
-
