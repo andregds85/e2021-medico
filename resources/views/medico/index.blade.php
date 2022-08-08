@@ -12,22 +12,12 @@ use App\Models\mapahospital;
 use App\Models\medicoRegulador;
 use App\Models\regulador;
 
-
 use App\Http\Controllers\mapahospitalController;
 use App\Http\Controllers\medicoReguladorController;
 use App\Http\Controllers\reguladorController;
 
-
-
-
 $regulad=regulador::all();
 $count = regulador::count();    
-
-if($count>0){
-echo '<script language="javascript">alert("Esse paciente ja foi Regulado ");</script>';  
-echo redirect()->route('mapasReg.index');
-
-}
 
 
 $tab = mapahospital::all();
