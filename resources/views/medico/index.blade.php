@@ -17,14 +17,22 @@ use App\Http\Controllers\medicoReguladorController;
 use App\Http\Controllers\reguladorController;
 
 $regulad=regulador::all();
-$count = regulador::count();    
+$ob = regulador::where('id_paciente',$id1)->count();
+
+        if($ob<>0){ 
+
+echo '<script language="javascript">alert("Paciente ja Foi Regulado ");</script>';  
+
+echo  "<body onload='window.history.back();'>";
+
+
+       }
+
+
 
 
 $tab = mapahospital::all();
 $hosp = mapahospital::where('idPaciente',$id1)->get();
-
-
-
 
 ?>
 @foreach ($hosp as $o1)
@@ -58,8 +66,8 @@ $rest = substr($o1->realizou, 0, 1);
     <form action="{{ url('recebe') }}" method="GET" id="validate" enctype="multipart/form-data" NAME="regform"
     onsubmit="return valida()"> 
 @csrf
-                       
-                     
+                    
+                    
                         </div>
                         </div>
                         </div>
@@ -149,4 +157,7 @@ $rest = substr($o1->realizou, 0, 1);
 
 @endforeach
 @endsection
+
+
+
 

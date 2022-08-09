@@ -27,6 +27,7 @@
     @endif
 
 
+    
     <form action="{{ route('pacientes.store') }}" method="POST">
     	@csrf
 

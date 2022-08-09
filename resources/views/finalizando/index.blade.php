@@ -68,9 +68,7 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
      <b>Especialidade: </b> {{$t->especialidade }}<br>
      </td>
      <td>
-   
-
-     
+        
     <b> Código do Procedimento: </b> {{$t->cod_procedimento}}<br>
     <b> Procedimento:</b> {{$t->procedimento}}<br>
     <b> Vagas:</b> {{$t->vagas}}<br>
@@ -120,10 +118,9 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
               ?>
               @foreach ($pacBuscou as $z)
 
-
            <b>Código da Solicitação: </b> {{$z->solicitacao }}<br>
-
            <?php $_SESSION['zsolicitacao'] = $z->solicitacao; ?>
+
 
            <b>Data da Inserção :</b>{{$z->created_at }}<br>
            <b>CNS:</b>{{$z->cns }}<br>
@@ -141,7 +138,6 @@ $itensP2 =  incluir_mapa_p2::where('macro',$macro)->get();
 <?php 
 $tabelap3 = municipio_mapa_p3::all();
 $vbobserv = municipio_mapa_p3::where('idp2',$t2->id)->get();
-
 
 echo  $observacao = municipio_mapa_p3::where('idp2',$t2->id)->count();
 
