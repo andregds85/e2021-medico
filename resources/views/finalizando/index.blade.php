@@ -180,11 +180,8 @@ echo  $observacao = mapahospital::where('idp2',$ref)->count();
         <b><a class="btn btn-info" href="{{ route('final.show',$o1->id)}}">Finalizar Mapa</a>   <?php 
    }
 
-
-
+   
 ?>
-
-
 @endforeach
 @endforeach 
 @endforeach 

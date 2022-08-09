@@ -19,10 +19,7 @@ $avfinal=$_GET['avfinal'];
 $avfinal;
 
 $login=$_GET['usuarioSistema'];
-
-
 regulador::insert(['id_paciente' => $idPaciente,'obs' => $obs,'avfinal' => $avfinal]); 
-
 ?>
 
 <script>

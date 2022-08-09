@@ -6,11 +6,15 @@ use App\Models\mapas;
 
 use App\Models\finalMaps;
 use App\Models\Pacientes;
+use App\Models\medicoRegulador;
+use App\Models\regulador;
 
 use App\Http\Controllers\mapahospitalController;
 use App\Http\Controllers\finalMapsController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\reguladorController;
+
 
 use App\Models\incluir_mapa_p2;
 use App\Models\mapahospital;
@@ -181,6 +185,28 @@ Usuário:{{$o1->usuario }}<br>
      </tr>
   </tbody>
 </table>  
+
+
+<table class="table">
+  <tbody>
+    <tr>
+
+<?php
+$regulad=regulador::all();
+$ob = regulador::where('id_paciente',$m->idPaciente)->count();
+        if($ob<>0){ ?>
+<div class="alert alert-danger" role="alert">
+ Paciente Regulado
+</div>      
+<?php }
+?>
+    </tr>
+ </tbody>
+</table>  
+
+
+
+
 
 
 @endforeach

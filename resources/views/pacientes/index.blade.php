@@ -23,6 +23,7 @@
         </div>
     @endif
 
+    
     <?php
     use App\Models\Categoria;
     use App\Models\Pacientes;
