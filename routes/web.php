@@ -29,6 +29,10 @@ use App\Http\Controllers\sairController;
 use App\Http\Controllers\pesquisaHospSig2Controller;
 use App\Http\Controllers\meFinalController;
 use App\Http\Controllers\recebeFormController;
+use App\Http\Controllers\aprovadosController;
+
+
+
 
 
 
@@ -60,6 +64,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('excluir', contarController::class);
     Route::resource('medico', meFinalController::class);
     Route::resource('recebe', recebeFormController::class);
+    Route::resource('aprovados', aprovadosController::class);
+
+
+
+
+    
+
+
+
 
 
     Route::resource('municipio', MunicipioController::class);
