@@ -32,6 +32,8 @@ use App\Http\Controllers\recebeFormController;
 use App\Http\Controllers\aprovadosController;
 use App\Http\Controllers\pendentesController;
 use App\Http\Controllers\devolvidoController;
+use App\Http\Controllers\reenviadoController;
+use App\Http\Controllers\negadoController;
 
 
 
@@ -70,6 +72,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('aprovados', aprovadosController::class);
     Route::resource('pendentes', pendentesController::class);
     Route::resource('devolvido', devolvidoController::class);
+    Route::resource('reenviado', reenviadoController::class);
+    Route::resource('negado', negadoController::class);
 
 
     
