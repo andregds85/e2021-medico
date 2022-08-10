@@ -30,6 +30,9 @@ use App\Http\Controllers\pesquisaHospSig2Controller;
 use App\Http\Controllers\meFinalController;
 use App\Http\Controllers\recebeFormController;
 use App\Http\Controllers\aprovadosController;
+use App\Http\Controllers\pendentesController;
+use App\Http\Controllers\devolvidoController;
+
 
 
 
@@ -65,15 +68,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('medico', meFinalController::class);
     Route::resource('recebe', recebeFormController::class);
     Route::resource('aprovados', aprovadosController::class);
-
-
+    Route::resource('pendentes', pendentesController::class);
+    Route::resource('devolvido', devolvidoController::class);
 
 
     
-
-
-
-
 
     Route::resource('municipio', MunicipioController::class);
     Route::resource('regulador', MedicoReguladorController::class);

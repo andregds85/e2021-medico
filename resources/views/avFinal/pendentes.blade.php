@@ -12,7 +12,7 @@
 <!-- Passo 1 !-->
   <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title"><b>Pacientes aprovados pelo Médico Regulador</b></h5>
+        <h5 class="card-title"><b>Pacientes pendente pelo Médico Regulador</b></h5>
         <h6 class="card-title"><b></b></h6>
               
 
@@ -26,7 +26,7 @@ use App\Http\Controllers\medicoReguladorController;
 use App\Http\Controllers\reguladorController;
 
 $tabela = regulador::all(); 
-$itens = regulador::where('avFinal','aprovado')->get();
+$itens = regulador::where('avFinal','pendente')->get();
 ?>
 
     @if ($message = Session::get('success'))
