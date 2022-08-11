@@ -39,8 +39,9 @@ Pacientes::where('id',$idPaciente)->update(['statusSolicitacao' => $avfinal]);
 }
 </script>
 
-
-<body onload='window.history.back();'>
+<?php 
+echo  redirect('/pacientes');
+?>
 @endsection
 
 
